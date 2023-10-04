@@ -1,5 +1,11 @@
 export const Dashboard = () => {
-  return <div>This is a Dashboard component.</div>;
+  return <div>
+    This is Dashboard component.
+    <div>
+      <img class="100vh" src="product-management/src/components/dashboard/aston_martindb12.jpeg" alt="DB12"/>
+    </div>
+  </div>;
+  
 };
 //add a table
 //show list of products.
