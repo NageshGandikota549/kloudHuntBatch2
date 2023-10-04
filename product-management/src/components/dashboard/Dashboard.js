@@ -3,12 +3,12 @@ export const Dashboard = () => {
     This is Dashboard component.
     <div  className="d-flex flex-row">
       <div>
-      <img src="product-management/src/components/dashboard/aston_martindb12.jpeg" alt=""/>
+      <img src="aston_martindb12.jpeg" alt=""/>
       <p>Model: DB12</p>
       <p>Price: $100,000</p>
       </div>
       <div>
-        <img src="product-management/src/components/dashboard/aston_martindb12.jpeg" alt=""/>
+        <img src="1965-shelby-cobra-superformance.jpeg" alt=""/>
         <p>Model: Cobra</p>
         <p>Price: $100,000</p>
       </div>
