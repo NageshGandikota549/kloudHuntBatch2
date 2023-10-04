@@ -1,0 +1,47 @@
+1.Class based components  -> we use class
+2.Functional components --> we use js functions
+
+class Dashboard extends React.Component
+{
+    constructor(){
+
+    }
+    ComponentDidMount(){
+        // statements
+    }
+
+    //ComponentDidMount
+    //getDerivedStateFromProps
+    //ComponentWillUnmount
+
+    render (<div> this is dashboard component</div>)
+
+    
+
+}
+
+-----------------------------------------------------------
+
+
+
+function Dashboard(){
+    return <div>this is dashboard component..</div>
+}
+
+
+
+// Component Life Cycle
+
+//Mounting phase
+//Updating phase
+//Unmounting phase
+
+ReactHooks:
+1.useState
+2.useEffect -- Life cycle methods of React component
+3.useMemo
+4.useCallback
+5.useRef
+6.useReducer
+
+useState --  used to store the local state/information of a component
