@@ -1,24 +1,45 @@
+import "./Dashboard.css";
 export const Dashboard = () => {
-  return <div>
-    This is Dashboard component.
-    <div  className="d-flex flex-row">
-      <div>
-      <img src="aston_martindb12.jpeg" alt=""/>
-      <p>Model: DB12</p>
-      <p>Price: $100,000</p>
-      </div>
-      <div>
-        <img src="1965-shelby-cobra-superformance.jpeg" alt=""/>
-        <p>Model: Cobra</p>
-        <p>Price: $100,000</p>
-      </div>
-      
+  const products = [
+    { image: "aston_martindb12.jpeg", model: "DB12", price: 100000 },
+    {
+      image: "1965-shelby-cobra-superformance.jpeg",
+      model: "Cobra",
+      price: 900000,
+    },
+    {
+      image: "1965-shelby-cobra-superformance.jpeg",
+      model: "ZX",
+      price: 80000,
+    },
+    {
+      image: "1965-shelby-cobra-superformance.jpeg",
+      model: "TVE",
+      price: 0,
+    },
+    {
+      image: "1965-shelby-cobra-superformance.jpeg",
+      model: "TVE",
+      price: 0,
+    },
+    {
+      image: "1965-shelby-cobra-superformance.jpeg",
+      model: "TVE",
+      price: 0,
+    },
+  ];
 
+  return (
+    <div>
+      <div className="product-container">
+        {products.map((x) => (
+          <div className="product">
+            <img height="50px" width="50px" src={x.image} alt="" />
+            <p>Model: {x.model}</p>
+            <p>Price: {x.price > 0 ? "$ " + x.price : "Not available"} </p>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>;
-  
+  );
 };
-//add a table
-//show list of products.
-// show a box with product image on it and below the box show product name and price
-//show two products

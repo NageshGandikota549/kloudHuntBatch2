@@ -16,8 +16,6 @@ class Dashboard extends React.Component
 
     render (<div> this is dashboard component</div>)
 
-    
-
 }
 
 -----------------------------------------------------------
@@ -45,3 +43,5 @@ ReactHooks:
 6.useReducer
 
 useState --  used to store the local state/information of a component
+
+useEffect -- it is used for handling the side effects of a component
