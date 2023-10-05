@@ -34,7 +34,7 @@ export const Dashboard = () => {
       <div className="product-container">
         {products.map((x) => (
           <div className="product">
-            <img height="50px" width="50px" src={x.image} alt="" />
+            <img height="50px" width="60px" src={x.image} alt="" />
             <p>Model: {x.model}</p>
             <p>Price: {x.price > 0 ? "$ " + x.price : "Not available"} </p>
           </div>
