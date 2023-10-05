@@ -1,5 +1,22 @@
 export const Dashboard = () => {
-  return <div>This is a Dashboard component.</div>;
+  return <div>
+    This is Dashboard component.
+    <div  className="d-flex flex-row">
+      <div>
+      <img src="aston_martindb12.jpeg" alt=""/>
+      <p>Model: DB12</p>
+      <p>Price: $100,000</p>
+      </div>
+      <div>
+        <img src="1965-shelby-cobra-superformance.jpeg" alt=""/>
+        <p>Model: Cobra</p>
+        <p>Price: $100,000</p>
+      </div>
+      
+
+    </div>
+  </div>;
+  
 };
 //add a table
 //show list of products.
