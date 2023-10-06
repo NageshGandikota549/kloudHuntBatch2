@@ -6,6 +6,9 @@ import { Navigation } from "./components/navigation/Navigation";
 import { Login } from "./components/login/Login";
 import { ProductList } from "./components/product-list/ProductList";
 
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+        
 function App() {
   return (
     <div>

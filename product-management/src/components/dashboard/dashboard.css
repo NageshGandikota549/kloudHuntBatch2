@@ -5,3 +5,7 @@
 .product{
     width: 300px;
 }
+
+th{
+    text-align: left;
+}
