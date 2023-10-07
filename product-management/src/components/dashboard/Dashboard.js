@@ -51,34 +51,15 @@ export const Dashboard = () => {
 
   return (
     <div>
-      <Filter
-        productId={productId}
-        rowsPerPage={rowsPerPage}
-        onProductIdChange={handleProductIdChange}
-        onRowsPerPageChange={handleRowsPerPageChange}
-      />
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((x) => {
-            return (
-              <tr>
-                <td>{x.id}</td>
-                <td>{x.title}</td>
-                <td>{x.category}</td>
-                <td>{x.price}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="product-container">
+        {products.map((x) => (
+          <div className="product">
+            <img height="50px" width="60px" src={x.image} alt="" />
+            <p>Model: {x.model}</p>
+            <p>Price: {x.price > 0 ? "$ " + x.price : "Not available"} </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
