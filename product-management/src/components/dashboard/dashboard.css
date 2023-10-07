@@ -3,5 +3,9 @@
     flex-wrap: wrap;
 }
 .product{
-    width: 350px;
+    width: 300px;
+}
+
+th{
+    text-align: left;
 }
