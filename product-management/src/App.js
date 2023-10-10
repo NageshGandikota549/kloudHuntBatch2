@@ -8,7 +8,8 @@ import { ProductList } from "./components/product-list/ProductList";
 
 //theme
 import "primereact/resources/themes/lara-light-indigo/theme.css";
-        
+import { ProductDetails } from "./components/product-details/ProductDetails";
+
 function App() {
   return (
     <div>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/register" Component={Register} />
           <Route path="/login" Component={Login} />
           <Route path="/product-list" Component={ProductList} />
+          <Route path="/product-details/:id" Component={ProductDetails} />
         </Routes>
       </BrowserRouter>
     </div>
