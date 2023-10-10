@@ -37,11 +37,22 @@ function Dashboard(){
 ReactHooks:
 1.useState
 2.useEffect -- Life cycle methods of React component
-3.useMemo
+3.useMemo 
 4.useCallback
 5.useRef
-6.useReducer
+6.useContext
+7.useReducer
+
+** Note: whenever state or props changes components will rerendered
+whenever useRef value changes component won't rerender.
+
 
 useState --  used to store the local state/information of a component
 
 useEffect -- it is used for handling the side effects of a component
+
+
+useMemo  -- Memorizes the high computation logic, unless there is a change in the dependency state
+
+useCallback -- memorizes the functions
+React.memo -- memorizes the component

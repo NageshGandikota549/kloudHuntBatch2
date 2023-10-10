@@ -17,6 +17,9 @@ export const Navigation = () => {
       <Link to={"/product-list"}>
         <div className="link">ProductList</div>
       </Link>
+      <Link to={"/parent"}>
+        <div className="link">Parent</div>
+      </Link>
     </div>
   );
 };

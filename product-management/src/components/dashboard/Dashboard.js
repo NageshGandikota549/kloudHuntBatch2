@@ -60,30 +60,46 @@ export const Dashboard = () => {
     };
   }, []);
 
-  const handleInputChange = (event) => {
-    setValue(event.target.value);
-  };
-
   const calculateIntrest = useMemo(() => {
+    console.log("line 68");
     return (principle * time * rate) / 100;
-  }, [principle, time, rate]);
-
-  console.log(calculateIntrest);
-  console.log(calculateIntrest);
-  console.log(calculateIntrest);
+  }, [principle, rate, time]);
 
   return (
     <div>
       <div>
-        <input value={value} type="text" onChange={handleInputChange} />
+        <label>principle amount:</label>
+        <input
+          type="text"
+          value={principle}
+          onChange={(event) => setprinciple(parseInt(event.target.value))}
+        />
       </div>
+      <div>
+        <label>time:</label>
+        <input
+          type="text"
+          value={time}
+          onChange={(event) => setTime(parseInt(event.target.value))}
+        />
+      </div>
+      <div>
+        <label>rate of interest: </label>
+        <input
+          type="text"
+          value={rate}
+          onChange={(event) => setRate(parseInt(event.target.value))}
+        />
+      </div>
+      <div>Interest payable: {calculateIntrest}</div>
+
       <Filter
         productId={productId}
         rowsPerPage={rowsPerPage}
         onProductIdChange={handleProductIdChange}
         onRowsPerPageChange={handleRowsPerPageChange}
       />
-      <table>
+      {/* <table>
         <thead>
           <tr>
             <th>Id</th>
@@ -109,7 +125,7 @@ export const Dashboard = () => {
             );
           })}
         </tbody>
-      </table>
+      </table>*/}
     </div>
   );
 };
