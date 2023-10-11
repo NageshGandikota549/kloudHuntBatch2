@@ -20,6 +20,9 @@ export const Navigation = () => {
       <Link to={"/parent"}>
         <div className="link">Parent</div>
       </Link>
+      <Link to={"/categories"}>
+        <div className="link">Categories</div>
+      </Link>
     </div>
   );
 };
