@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import "./Dashboard.css";
 import { Filter } from "./Filter";
+import { useNavigate } from "react-router-dom";
 
 const GET_PRODUCTS_URL = "https://fakestoreapi.com/products";
 
@@ -8,6 +9,16 @@ export const Dashboard = () => {
   const [products, setProducts] = useState([]);
   const [productId, setProductId] = useState(null);
   const [rowsPerPage, setRowsPerPage] = useState(20);
+  const [value, setValue] = useState("");
+  const navigate = useNavigate();
+
+  const [principle, setprinciple] = useState(0);
+  const [time, setTime] = useState(0);
+  const [rate, setRate] = useState(0);
+
+  const handleNavigation = (id) => {
+    navigate("/product-details/" + id);
+  };
 
   useEffect(() => {
     const url =
@@ -23,19 +34,19 @@ export const Dashboard = () => {
       });
   }, [productId]);
 
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products?limit=" + rowsPerPage)
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
-  }, [rowsPerPage]);
+  // useEffect(() => {
+  //   fetch("https://fakestoreapi.com/products?limit=" + rowsPerPage)
+  //     .then((res) => res.json())
+  //     .then((json) => setProducts(json));
+  // }, [rowsPerPage]);
 
-  const handleProductIdChange = (event) => {
+  const handleProductIdChange = useCallback((event) => {
     setProductId(parseInt(event.target.value));
-  };
+  }, []);
 
-  const handleRowsPerPageChange = (event) => {
+  const handleRowsPerPageChange = useCallback((event) => {
     setRowsPerPage(parseInt(event.target.value));
-  };
+  }, []);
 
   const hanldeWindowResize = () => {
     console.log(window.innerWidth);
@@ -49,15 +60,46 @@ export const Dashboard = () => {
     };
   }, []);
 
+  const calculateIntrest = useMemo(() => {
+    console.log("line 68");
+    return (principle * time * rate) / 100;
+  }, [principle, rate, time]);
+
   return (
     <div>
+      <div>
+        <label>principle amount:</label>
+        <input
+          type="text"
+          value={principle}
+          onChange={(event) => setprinciple(parseInt(event.target.value))}
+        />
+      </div>
+      <div>
+        <label>time:</label>
+        <input
+          type="text"
+          value={time}
+          onChange={(event) => setTime(parseInt(event.target.value))}
+        />
+      </div>
+      <div>
+        <label>rate of interest: </label>
+        <input
+          type="text"
+          value={rate}
+          onChange={(event) => setRate(parseInt(event.target.value))}
+        />
+      </div>
+      <div>Interest payable: {calculateIntrest}</div>
+
       <Filter
         productId={productId}
         rowsPerPage={rowsPerPage}
         onProductIdChange={handleProductIdChange}
         onRowsPerPageChange={handleRowsPerPageChange}
       />
-      <table>
+      {/* <table>
         <thead>
           <tr>
             <th>Id</th>
@@ -74,11 +116,16 @@ export const Dashboard = () => {
                 <td>{x.title}</td>
                 <td>{x.category}</td>
                 <td>{x.price}</td>
+                <td>
+                  <button onClick={() => handleNavigation(x.id)}>
+                    View Details
+                  </button>
+                </td>
               </tr>
             );
           })}
         </tbody>
-      </table>
+      </table>*/}
     </div>
   );
 };

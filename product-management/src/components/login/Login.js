@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import "./login.css";
 
 export const Login = () => {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
+
+  const userIdRef = useRef(null);
+
+  useEffect(() => {
+    userIdRef.current.focus();
+  }, []);
 
   const handleUserIdChange = (event) => {
     const value = event.target.value;
@@ -18,16 +25,34 @@ export const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
+      <img src="login-avatar.png" alt="Avatar" />
       <div>
         <label for="user-id">UserId: </label>
-        <input type="text" onChange={handleUserIdChange} id="user-id" />
+        <input
+          ref={userIdRef}
+          type="text"
+          placeholder="Enter Username"
+          onChange={handleUserIdChange}
+          id="user-id"
+        />
       </div>
       <div>
         <label for="password">Password:</label>
-        <input type="password" onChange={handlePasswordChange} id="password" />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          onChange={handlePasswordChange}
+          id="password"
+        />
       </div>
-      <button onClick={handleSubmit}>Submit</button>
+      <div className="buttons">
+        <button onClick={handleSubmit}>Submit</button>
+        <button type="button">Cancel</button>
+      </div>
+      <label>
+        <input type="checkbox" name="remember" /> Remember me
+      </label>
     </div>
   );
 };
