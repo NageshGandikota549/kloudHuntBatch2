@@ -1,42 +1,14 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import "./login.css";
 
-interface IUserDetails {
-  name: string;
-  age: number;
-  address: string | number;
-  phone: number;
-  dob: Date;
-}
-
 export const Login = () => {
   const [userId, setUserId] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [userDetails, setUserDetails] = useState<IUserDetails[]>([]);
-  const [ticketNumbers, setTicketNumbers] = useState<number[]>([]);
-
-  // let firstName: string = "peter";
-  // let age: number = 10;
-  // let isVoter: boolean = true;
-  // let Dob: Date = new Date();
-
-  // setUserDetails({
-  //   name: "nagesh",
-  //   age: 29,
-  //   address: "zyz",
-  //   phone: 23432424,
-  //   dob: new Date(),
-  // });
-
   const userIdRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (userIdRef && userIdRef.current) userIdRef.current.focus();
   }, []);
-
-  const calculateSum: Function = (a: number, b: number): number => {
-    return a + b;
-  };
 
   const handleUserIdChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const value = event.target.value;
@@ -51,13 +23,18 @@ export const Login = () => {
     console.log(userId, password);
   };
 
+  const handleCancel = () => {
+    setUserId("");
+    setPassword("");
+  };
+
   return (
     <div className="login-container">
-      {calculateSum(1, 3)}
-      <img src="login-avatar.png" alt="Avatar" />
+      <img data-testid="user-profile" src="login-avatar.png" alt="Avatar" />
       <div>
         <label htmlFor="user-id">UserId: </label>
         <input
+          value={userId}
           ref={userIdRef}
           type="text"
           placeholder="Enter Username"
@@ -68,6 +45,7 @@ export const Login = () => {
       <div>
         <label htmlFor="password">Password:</label>
         <input
+          value={password}
           type="password"
           placeholder="Enter Password"
           onChange={handlePasswordChange}
@@ -75,8 +53,12 @@ export const Login = () => {
         />
       </div>
       <div className="buttons">
-        <button onClick={handleSubmit}>Submit</button>
-        <button type="button">Cancel</button>
+        <button disabled={!userId || !password} onClick={handleSubmit}>
+          Submit
+        </button>
+        <button onClick={handleCancel} type="button">
+          Cancel
+        </button>
       </div>
       <label>
         <input type="checkbox" name="remember" /> Remember me
