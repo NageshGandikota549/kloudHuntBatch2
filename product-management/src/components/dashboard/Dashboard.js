@@ -34,12 +34,6 @@ export const Dashboard = () => {
       });
   }, [productId]);
 
-  // useEffect(() => {
-  //   fetch("https://fakestoreapi.com/products?limit=" + rowsPerPage)
-  //     .then((res) => res.json())
-  //     .then((json) => setProducts(json));
-  // }, [rowsPerPage]);
-
   const handleProductIdChange = useCallback((event) => {
     setProductId(parseInt(event.target.value));
   }, []);
@@ -60,46 +54,15 @@ export const Dashboard = () => {
     };
   }, []);
 
-  const calculateIntrest = useMemo(() => {
-    console.log("line 68");
-    return (principle * time * rate) / 100;
-  }, [principle, rate, time]);
-
   return (
     <div>
-      <div>
-        <label>principle amount:</label>
-        <input
-          type="text"
-          value={principle}
-          onChange={(event) => setprinciple(parseInt(event.target.value))}
-        />
-      </div>
-      <div>
-        <label>time:</label>
-        <input
-          type="text"
-          value={time}
-          onChange={(event) => setTime(parseInt(event.target.value))}
-        />
-      </div>
-      <div>
-        <label>rate of interest: </label>
-        <input
-          type="text"
-          value={rate}
-          onChange={(event) => setRate(parseInt(event.target.value))}
-        />
-      </div>
-      <div>Interest payable: {calculateIntrest}</div>
-
       <Filter
         productId={productId}
         rowsPerPage={rowsPerPage}
         onProductIdChange={handleProductIdChange}
         onRowsPerPageChange={handleRowsPerPageChange}
       />
-      {/* <table>
+      <table>
         <thead>
           <tr>
             <th>Id</th>
@@ -125,7 +88,7 @@ export const Dashboard = () => {
             );
           })}
         </tbody>
-      </table>*/}
+      </table>
     </div>
   );
 };
