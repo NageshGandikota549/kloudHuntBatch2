@@ -1,22 +1,29 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./Dashboard.css";
 import { Filter } from "./Filter";
 import { useNavigate } from "react-router-dom";
 
+interface Product {
+  id: number;
+  title: string;
+  category: string;
+  price: number;
+}
+
 const GET_PRODUCTS_URL = "https://fakestoreapi.com/products";
 
-export const Dashboard = () => {
-  const [products, setProducts] = useState([]);
-  const [productId, setProductId] = useState(null);
-  const [rowsPerPage, setRowsPerPage] = useState(20);
-  const [value, setValue] = useState("");
+export const Dashboard: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [productId, setProductId] = useState<number | null>(null);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(20);
+  const [value, setValue] = useState<string>("");
   const navigate = useNavigate();
 
-  const [principle, setprinciple] = useState(0);
-  const [time, setTime] = useState(0);
-  const [rate, setRate] = useState(0);
+  const [principle, setPrinciple] = useState<number>(0);
+  const [time, setTime] = useState<number>(0);
+  const [rate, setRate] = useState<number>(0);
 
-  const handleNavigation = (id) => {
+  const handleNavigation = (id: number) => {
     navigate("/product-details/" + id);
   };
 
@@ -34,23 +41,23 @@ export const Dashboard = () => {
       });
   }, [productId]);
 
-  const handleProductIdChange = useCallback((event) => {
+  const handleProductIdChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setProductId(parseInt(event.target.value));
   }, []);
 
-  const handleRowsPerPageChange = useCallback((event) => {
+  const handleRowsPerPageChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value));
   }, []);
 
-  const hanldeWindowResize = () => {
+  const handleWindowResize = () => {
     console.log(window.innerWidth);
   };
 
   useEffect(() => {
-    window.addEventListener("resize", hanldeWindowResize);
+    window.addEventListener("resize", handleWindowResize);
     return () => {
-      //clearup code
-      window.removeEventListener("resize", hanldeWindowResize);
+      //cleanup code
+      window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
 
@@ -74,7 +81,7 @@ export const Dashboard = () => {
         <tbody>
           {products.map((x) => {
             return (
-              <tr>
+              <tr key={x.id}>
                 <td>{x.id}</td>
                 <td>{x.title}</td>
                 <td>{x.category}</td>
